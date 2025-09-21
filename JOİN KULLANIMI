@@ -1,0 +1,4 @@
+SELECT m.first_name, m.last_name, b.title, b.author
+FROM BORROWINGS br
+JOIN MEMBERS m ON br.member_id = m.member_id
+JOIN BOOKS b ON br.book_id = b.book_id;
