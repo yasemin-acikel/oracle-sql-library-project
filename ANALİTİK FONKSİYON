@@ -1,0 +1,5 @@
+SELECT m.first_name, m.last_name, b.title, br.borrow_date,
+       ROW_NUMBER() OVER (PARTITION BY m.member_id ORDER BY br.borrow_date) AS borrow_rank
+FROM BORROWINGS br
+JOIN MEMBERS m ON br.member_id = m.member_id
+JOIN BOOKS b ON br.book_id = b.book_id;
