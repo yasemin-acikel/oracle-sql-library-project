@@ -1,0 +1,30 @@
+CREATE TABLE MEMBERS (
+    member_id      NUMBER PRIMARY KEY,
+    first_name     VARCHAR2(50),
+    last_name      VARCHAR2(50),
+    join_date      DATE,
+    city           VARCHAR2(50)
+);
+
+CREATE TABLE BOOKS (
+    book_id        NUMBER PRIMARY KEY,
+    title          VARCHAR2(100),
+    author         VARCHAR2(100),
+    genre          VARCHAR2(50),
+    published_year NUMBER
+);
+
+CREATE TABLE BORROWINGS (
+    borrow_id      NUMBER PRIMARY KEY,
+    member_id      NUMBER REFERENCES MEMBERS(member_id),
+    book_id        NUMBER REFERENCES BOOKS(book_id),
+    borrow_date    DATE,
+    return_date    DATE
+);
+
+CREATE TABLE FINES (
+    fine_id        NUMBER PRIMARY KEY,
+    member_id      NUMBER REFERENCES MEMBERS(member_id),
+    fine_amount    NUMBER(8,2),
+    fine_date      DATE
+);
