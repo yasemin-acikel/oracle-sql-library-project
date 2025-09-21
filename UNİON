@@ -1,0 +1,7 @@
+SELECT title, genre
+FROM BOOKS
+WHERE genre = 'Roman'
+UNION
+SELECT title, genre
+FROM BOOKS
+WHERE genre = 'Bilim';
