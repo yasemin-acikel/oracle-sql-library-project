@@ -1,0 +1,5 @@
+SELECT first_name, last_name
+FROM MEMBERS
+WHERE member_id NOT IN (
+    SELECT DISTINCT member_id FROM BORROWINGS
+);
