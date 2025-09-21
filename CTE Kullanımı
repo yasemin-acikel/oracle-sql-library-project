@@ -1,0 +1,10 @@
+WITH TotalFines AS (
+    SELECT member_id, SUM(fine_amount) AS total_fine
+    FROM FINES
+    GROUP BY member_id
+)
+SELECT m.first_name, m.last_name, t.total_fine
+FROM TotalFines t
+JOIN MEMBERS m ON t.member_id = m.member_id
+ORDER BY t.total_fine DESC
+FETCH FIRST 5 ROWS ONLY;
