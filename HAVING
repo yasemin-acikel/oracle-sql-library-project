@@ -1,0 +1,5 @@
+SELECT m.first_name, m.last_name, COUNT(*) AS total_borrowed
+FROM BORROWINGS br
+JOIN MEMBERS m ON br.member_id = m.member_id
+GROUP BY m.first_name, m.last_name
+HAVING COUNT(*) > 3;
