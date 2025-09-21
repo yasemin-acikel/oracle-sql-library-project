@@ -1,0 +1,5 @@
+SELECT m.first_name, m.last_name, b.title,
+       NVL(TO_CHAR(br.return_date, 'YYYY-MM-DD'), 'Henüz İade Edilmedi') AS return_status
+FROM BORROWINGS br
+JOIN MEMBERS m ON br.member_id = m.member_id
+JOIN BOOKS b ON br.book_id = b.book_id;
